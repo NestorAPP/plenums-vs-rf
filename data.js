@@ -5,7 +5,7 @@ const courtData = [
     "date": "19.06.1959",
     "number": "2",
     "court": "ВС СССР",
-    "url": "https://sudact.ru/law/postanovlenie-plenuma-verkhovnogo-suda-sssr-ot-19061959/"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20СССР%20от%2019.06.1959%20№%202"
   },
   {
     "id": 2,
@@ -13,7 +13,7 @@ const courtData = [
     "date": "07.02.1967",
     "number": "35",
     "court": "ВС РФ",
-    "url": "https://vsrf.ru/documents/own/7538/"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2007.02.1967%20№%2035"
   },
   {
     "id": 3,
@@ -21,7 +21,7 @@ const courtData = [
     "date": "08.10.1973",
     "number": "15",
     "court": "ВС СССР",
-    "url": "https://sudrf.cntd.ru/document/9053827"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20суда%20СССР%20от%208.10.1973%20№%2015"
   },
   {
     "id": 4,
@@ -29,7 +29,7 @@ const courtData = [
     "date": "14.03.1975",
     "number": "2",
     "court": "ВС СССР",
-    "url": "https://www.consultant.ru/document/cons_doc_LAW_4662/"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20суда%20СССР%20от%2014.03.1975%20№%202"
   },
   {
     "id": 5,
@@ -37,7 +37,7 @@ const courtData = [
     "date": "23.12.1980",
     "number": "6",
     "court": "ВС СССР",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/720/720faea869017049d3688ef786844b4f.html"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20суда%20СССР%20от%2023.12.1980%20№%206"
   },
   {
     "id": 6,
@@ -45,7 +45,7 @@ const courtData = [
     "date": "05.12.1986",
     "number": "15",
     "court": "ВС СССР",
-    "url": "https://vsrf.ru/documents/own/7735/"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20СССР%20от%2005.12.1986%20№%2015"
   },
   {
     "id": 7,
@@ -53,7 +53,7 @@ const courtData = [
     "date": "31.10.1995",
     "number": "8",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/7b6/7b65bb90f3d66072a0492201ca848410.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2031.10.1995%20№%208"
   },
   {
     "id": 8,
@@ -61,7 +61,7 @@ const courtData = [
     "date": "17.01.1997",
     "number": "1",
     "court": "ВС РФ",
-    "url": "https://nnsc.рф/1997/postanovlenie-plenuma-vs-rf/N01-ot-17.01.1997.html"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2017.01.1997%20№%201"
   },
   {
     "id": 9,
@@ -69,7 +69,7 @@ const courtData = [
     "date": "27.01.1999",
     "number": "1",
     "court": "ВС РФ",
-    "url": "https://nnsc.рф/1999/postanovlenie-plenuma-vs-rf/N01-ot-27.01.1999.html"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2027.01.1999%20№%201"
   },
   {
     "id": 10,
@@ -77,7 +77,7 @@ const courtData = [
     "date": "12.03.2002",
     "number": "5",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/967/967342c8fc06b1fc1c52bbf1480b5929.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2012.03.2002%20№%205"
   },
   {
     "id": 11,
@@ -85,7 +85,7 @@ const courtData = [
     "date": "05.06.2002",
     "number": "14",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/eee/eeeс7d2e755a060b4cd2080a4c3381f2.html"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%205.06.2002%20№%2014"
   },
   {
     "id": 12,
@@ -93,7 +93,7 @@ const courtData = [
     "date": "27.12.2002",
     "number": "29",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/586/5863893f0d65f266569058eb14d7d082.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2027.12.2002%20№%2029"
   },
   {
     "id": 13,
@@ -101,7 +101,7 @@ const courtData = [
     "date": "24.02.2005",
     "number": "3",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/0ae/0ae3cfd143bd15835ec49606b385993e.html"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2024.02.2005%20№%203"
   },
   {
     "id": 14,
@@ -109,7 +109,7 @@ const courtData = [
     "date": "15.06.2006",
     "number": "14",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/88c/88cfa5d4ac24c5fe3922400882c009ac.html"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2015.06.2006%20№%2014"
   },
   {
     "id": 15,
@@ -117,7 +117,7 @@ const courtData = [
     "date": "05.12.2006",
     "number": "60",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/a18/a18478c515d23851624c2d6a157c4c64.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2005.12.2006%20№%2060"
   },
   {
     "id": 16,
@@ -125,7 +125,7 @@ const courtData = [
     "date": "26.04.2007",
     "number": "14",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/1d2/1d2d0ccec1ae400ee6f76edd740e82c0.html"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2026.04.2007%20№%2014"
   },
   {
     "id": 17,
@@ -133,7 +133,7 @@ const courtData = [
     "date": "15.11.2007",
     "number": "45",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/1e4/1e4d3de635833c7a47f5cda1d63acec3.html"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2015.11.2007%20№%2045"
   },
   {
     "id": 18,
@@ -141,7 +141,7 @@ const courtData = [
     "date": "27.12.2007",
     "number": "52",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/7ca/7ca126a6481de5153de45730d48c2bb5.html"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2027.12.2007%20№%2052"
   },
   {
     "id": 19,
@@ -149,7 +149,7 @@ const courtData = [
     "date": "03.04.2008",
     "number": "3",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/571/57150230b0a957fced159d2e45a68986.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%203.04.2008%20№%203"
   },
   {
     "id": 20,
@@ -157,7 +157,7 @@ const courtData = [
     "date": "09.12.2008",
     "number": "25",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/116/kyxpvytjzyqfkkxe4od22dxt9cyj41m.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%209.12.2008%20№%2025"
   },
   {
     "id": 21,
@@ -165,7 +165,7 @@ const courtData = [
     "date": "10.02.2009",
     "number": "1",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/2dc/itjj9jwraznpjkfexon1c0r3bxynlsvm.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2010.02.2009%20№%201"
   },
   {
     "id": 22,
@@ -173,7 +173,7 @@ const courtData = [
     "date": "21.04.2009",
     "number": "8",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/c93/je4nnvnq7inlt278hw64mqli86h6roz7.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2021.04.2009%20№%208"
   },
   {
     "id": 23,
@@ -181,7 +181,7 @@ const courtData = [
     "date": "16.10.2009",
     "number": "19",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/0d5/0d5da39bc081dd285af4f8054d41f51f.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2016.10.2009%20№%2019"
   },
   {
     "id": 24,
@@ -189,7 +189,7 @@ const courtData = [
     "date": "22.12.2009",
     "number": "28",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/0b2/0b2a5412c78b6327788845d37da7ae40.html"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2022.12.2009%20№%2028"
   },
   {
     "id": 25,
@@ -197,7 +197,7 @@ const courtData = [
     "date": "10.06.2010",
     "number": "12",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/89f/89fae19b27a2fa5da335fed6407c8ec.html"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2010.06.2010%20№%2012"
   },
   {
     "id": 26,
@@ -205,7 +205,7 @@ const courtData = [
     "date": "15.06.2010",
     "number": "16",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/9c6/9c6924177017a53867c094f497a2d87d.html"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2015.06.2010%20№%2016"
   },
   {
     "id": 27,
@@ -213,7 +213,7 @@ const courtData = [
     "date": "01.02.2011",
     "number": "1",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/387/ok6x31k4sryplyyok9z5ok43mrbqk5kw.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%201.02.2011%20№%201"
   },
   {
     "id": 28,
@@ -221,7 +221,7 @@ const courtData = [
     "date": "07.04.2011",
     "number": "6",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/d23/d2375f944838c17bea20cbe3c108f3cb.html"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%207.04.2011%20№%206"
   },
   {
     "id": 29,
@@ -229,7 +229,7 @@ const courtData = [
     "date": "28.06.2011",
     "number": "11",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/826/422upitv6bbzylygra4vbxfvq3pcp39.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2028.06.2011%20№%2011"
   },
   {
     "id": 30,
@@ -237,7 +237,7 @@ const courtData = [
     "date": "29.11.2011",
     "number": "17",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/07a/r1wawrkm4dhcbbb9ywqdux9hb39ixi4n.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2029.11.2011%20№%2017"
   },
   {
     "id": 31,
@@ -245,7 +245,7 @@ const courtData = [
     "date": "20.12.2011",
     "number": "21",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/3c7/ixyh6hznm9qj41y63zx4hwkpw6w5un9.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2020.12.2011%20№%2021"
   },
   {
     "id": 32,
@@ -253,7 +253,7 @@ const courtData = [
     "date": "09.02.2012",
     "number": "1",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/43c/43cc5248c47508685096279e080948e0.htm"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%209.02.2012%20№%201"
   },
   {
     "id": 33,
@@ -261,7 +261,7 @@ const courtData = [
     "date": "14.06.2012",
     "number": "11",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/7bb/7bbcfbcdc38ab68a91aa33166892dbcb.htm"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2014.06.2012%20№%2011"
   },
   {
     "id": 34,
@@ -269,7 +269,7 @@ const courtData = [
     "date": "28.06.2012",
     "number": "16",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/e00/e00ed73ad50ede7a1a04566d0b56685c.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2028.06.2012%20№%2016"
   },
   {
     "id": 35,
@@ -277,7 +277,7 @@ const courtData = [
     "date": "27.09.2012",
     "number": "19",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/b28/8gu0aox71v30v87plfe73zdfagg9iuts.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2027.09.2012%20№%2019"
   },
   {
     "id": 36,
@@ -285,7 +285,7 @@ const courtData = [
     "date": "27.06.2013",
     "number": "19",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/7a77a7a92006eb181dc82e78307499853d6.html"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2027.06.2013%20№%2019"
   },
   {
     "id": 37,
@@ -293,7 +293,7 @@ const courtData = [
     "date": "29.05.2014",
     "number": "9",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/13e/13eb179c193d95ad4d571a442f026cd3.html"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2029.05.2014%20№%209"
   },
   {
     "id": 38,
@@ -301,7 +301,7 @@ const courtData = [
     "date": "04.12.2014",
     "number": "16",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/50d/50dadcb9a98b54cc4ecb51aa8732bd6e.html"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%204.12.2014%20№%2016"
   },
   {
     "id": 39,
@@ -309,7 +309,7 @@ const courtData = [
     "date": "30.06.2015",
     "number": "29",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/add/add1d76f951e2ea4b21df356eb63eabf.html"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2030.06.2015%20№%2029"
   },
   {
     "id": 40,
@@ -317,7 +317,7 @@ const courtData = [
     "date": "07.07.2015",
     "number": "32",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/8dd/0pv1biytm8bwx752aunb0prv6k3l25b.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2007.07.2015%20№%2032"
   },
   {
     "id": 41,
@@ -325,7 +325,7 @@ const courtData = [
     "date": "17.12.2015",
     "number": "56",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/3b0/3b05863c7711173d5646177dcb593f03.html"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2017.12.2015%20№%2056"
   },
   {
     "id": 42,
@@ -333,7 +333,7 @@ const courtData = [
     "date": "22.12.2015",
     "number": "58",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/aca/tozewdcjp1nkjyu6dvx0cgq710q21f7m.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2022.12.2015%20№%2058"
   },
   {
     "id": 43,
@@ -341,7 +341,7 @@ const courtData = [
     "date": "29.03.2016",
     "number": "11",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/e5c/c2ex61sd41urdvkzb1da492zt7v3hljo.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2029.03.2016%20№%2011"
   },
   {
     "id": 44,
@@ -349,7 +349,7 @@ const courtData = [
     "date": "24.05.2016",
     "number": "21",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/e1b/e1b8bb73b0b3c3a4a353a6cae8ba64be.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2024.05.2016%20№%2021"
   },
   {
     "id": 45,
@@ -357,7 +357,7 @@ const courtData = [
     "date": "15.11.2016",
     "number": "48",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/bff/ihhew2y3jq0e9xb8180ay10fk657vi5l.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2015.11.2016%20№%2048"
   },
   {
     "id": 46,
@@ -365,7 +365,7 @@ const courtData = [
     "date": "29.11.2016",
     "number": "55",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/1c7/nobp5aw5xjlslshup1cpxhikrcter32e.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2029.11.2016%20№%2055"
   },
   {
     "id": 47,
@@ -373,7 +373,7 @@ const courtData = [
     "date": "27.04.2017",
     "number": "12",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/ef1/ef14bead7526677dc37dd5d668199e3c.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2027.04.2017%20№%2012"
   },
   {
     "id": 48,
@@ -381,7 +381,7 @@ const courtData = [
     "date": "01.06.2017",
     "number": "19",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/bab/bab6c21fc3baa2472d1aeabc94587a3e.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2001.06.2017%20№%2019"
   },
   {
     "id": 49,
@@ -389,7 +389,7 @@ const courtData = [
     "date": "03.10.2017",
     "number": "33",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/d5f/d5f6c97eca87aeacd90a7f7994998282.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2003.10.2017%20№%2033"
   },
   {
     "id": 50,
@@ -397,7 +397,7 @@ const courtData = [
     "date": "14.11.2017",
     "number": "44",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/c6d/c6d313dba7ec9ed6d025494ef633af29.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2014.11.2017%20№%2044"
   },
   {
     "id": 51,
@@ -405,7 +405,7 @@ const courtData = [
     "date": "30.11.2017",
     "number": "48",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/126/1267b0277c065cb1bfd6688dde4cb2e6.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2030.11.2017%20№%2048"
   },
   {
     "id": 52,
@@ -413,7 +413,7 @@ const courtData = [
     "date": "19.12.2017",
     "number": "51",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/c47/dsae500d80zjw9e98u0rrwoji2vkrqkr.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2019.12.2017%20№%2051"
   },
   {
     "id": 53,
@@ -421,7 +421,7 @@ const courtData = [
     "date": "26.12.2017",
     "number": "57",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/edd/edd710ab478337c03c3a0bf209579ff8.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2026.12.2017%20№%2057"
   },
   {
     "id": 54,
@@ -429,7 +429,7 @@ const courtData = [
     "date": "13.02.2018",
     "number": "5",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/afe/afed5bc9cc0b8a373dda66c2f1eaad6f.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2013.02.2018%20№%205"
   },
   {
     "id": 55,
@@ -437,7 +437,7 @@ const courtData = [
     "date": "15.05.2018",
     "number": "10",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/aad/aadbac04e85eb34cfef354ee0b40f75b.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2015.05.2018%20№%2010"
   },
   {
     "id": 56,
@@ -445,7 +445,7 @@ const courtData = [
     "date": "14.06.2018",
     "number": "17",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/29a/jy79a86s4txr5nge0pv1fnxixtnavcau.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2014.06.2018%20№%2017"
   },
   {
     "id": 57,
@@ -453,7 +453,7 @@ const courtData = [
     "date": "29.11.2018",
     "number": "41",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/a6d/a6d50e5097ed171a5799c83622bc4033.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2029.11.2018%20№%2041"
   },
   {
     "id": 58,
@@ -461,7 +461,7 @@ const courtData = [
     "date": "25.12.2018",
     "number": "46",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/6ba/6ba3b694810bd9ce8a1cf230e8f6e9f6.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2025.12.2018%20№%2046"
   },
   {
     "id": 59,
@@ -469,7 +469,7 @@ const courtData = [
     "date": "25.06.2019",
     "number": "18",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/215/2150132d0030997946c91fd59205e063.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2025.06.2019%20№%2018"
   },
   {
     "id": 60,
@@ -477,7 +477,7 @@ const courtData = [
     "date": "24.12.2019",
     "number": "58",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/28c/fwbvydw2ss7yj537qt4gwzq17peencz0.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2024.12.2019%20№%2058"
   },
   {
     "id": 61,
@@ -485,7 +485,7 @@ const courtData = [
     "date": "09.07.2020",
     "number": "18",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/ffa/6pgysqq9e4ryhv47wxcdfp88ixg34mva.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%209.07.2020%20№%2018"
   },
   {
     "id": 62,
@@ -493,7 +493,7 @@ const courtData = [
     "date": "17.12.2020",
     "number": "43",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/1f0/1f00b1db6a9edc9a17491e7a2c96fc6e.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2017.12.2020%20№%2043"
   },
   {
     "id": 63,
@@ -501,7 +501,7 @@ const courtData = [
     "date": "29.06.2021",
     "number": "21",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/c2f/c2f7157576195af25434ea46816865d8.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2029.06.2021%20№%2021"
   },
   {
     "id": 64,
@@ -509,7 +509,7 @@ const courtData = [
     "date": "07.06.2022",
     "number": "14",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/1c7/1c70134b732501bae3e0483046c92f5f.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%207.06.2022%20№%2014"
   },
   {
     "id": 65,
@@ -517,7 +517,7 @@ const courtData = [
     "date": "28.06.2022",
     "number": "20",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/1c7/1c70134b732501bae3e0483046c92f5f.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2028.06.2022%20№%2020"
   },
   {
     "id": 66,
@@ -525,7 +525,7 @@ const courtData = [
     "date": "15.12.2022",
     "number": "37",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/521/521aea0264bbeab90ac6296020a712cd.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2015.12.2022%20№%2037"
   },
   {
     "id": 67,
@@ -533,7 +533,7 @@ const courtData = [
     "date": "22.12.2022",
     "number": "39",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/9bc/9bc3499fbccc5508ba4a962d0c4f97e8.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2022.12.2022%20№%2039"
   },
   {
     "id": 68,
@@ -541,7 +541,7 @@ const courtData = [
     "date": "18.05.2023",
     "number": "11",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/d9e/d9e4dcd268a8499fc7eefa10d643eb28.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2018.05.2023%20№%2011"
   },
   {
     "id": 69,
@@ -549,7 +549,7 @@ const courtData = [
     "date": "01.06.2023",
     "number": "14",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/36e/36ea570047c4762be6485fd59c732f44.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%201.06.2023%20№%2014"
   },
   {
     "id": 70,
@@ -557,7 +557,7 @@ const courtData = [
     "date": "12.12.2023",
     "number": "43",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/2ff/c724shlt4hdi3loot2qg7s10dhvyz9nq.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2012.12.2023%20№%2043"
   },
   {
     "id": 71,
@@ -565,7 +565,7 @@ const courtData = [
     "date": "25.06.2024",
     "number": "18",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/a4d/ou61ct0zrav3pxtv7pywxj4uz600fka6.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2025.06.2024%20№%2018"
   },
   {
     "id": 72,
@@ -573,6 +573,6 @@ const courtData = [
     "date": "24.06.2025",
     "number": "10",
     "court": "ВС РФ",
-    "url": "https://www.vsrf.ru/media-proxy/upload/iblock/59a/yi0349el5090v92wrwx2xc2no2g0i7sx.pdf"
+    "url": "https://vsrf.ru/search/?q=Постановление%20Пленума%20Верховного%20Суда%20РФ%20от%2024.06.2025%20№%2010"
   }
 ];
