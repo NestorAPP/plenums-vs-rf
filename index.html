@@ -11,7 +11,7 @@
     <link rel="icon" type="image/png" href="icon-192.png">
     <link rel="apple-touch-icon" href="icon-192.png">
 
-    <!-- Библиотека для чтения DOCX (Файл должен лежать в корне проекта) -->
+    <!-- Библиотека для чтения DOCX -->
     <script src="mammoth.browser.min.js"></script>
 
     <style>
@@ -116,13 +116,14 @@
 <div class="doc-modal" id="docModal">
     <div class="doc-content">
         <button class="close-btn" onclick="closeDoc()">✕ Закрыть</button>
-        <h2 style="margin-bottom: 10px; font-size: 18px;">Пленум</h2>
+        <h2 style="margin-bottom: 10px; font-size: 18px;">Документ</h2>
         <div class="doc-body" id="docBody">
             <!-- Сюда будет вставляться текст -->
         </div>
     </div>
 </div>
 
+<!-- Подключаем данные -->
 <script src="data.js"></script>
 <script>
     const container = document.getElementById('resultsContainer');
@@ -140,38 +141,47 @@
             return;
         }
 
-        // Вместо ссылки <a href="${item.url}"> используем div с onclick
-        container.innerHTML = data.map(item => `
+        container.innerHTML = data.map(item => {
+            // Пытаемся достать дату из названия (если она есть)
+            let displayDate = "";
+            const dateMatch = item.title.match(/от \d{2}\.\d{2}\.\d{4}/);
+            if (dateMatch) {
+                displayDate = dateMatch[0].replace('от ', '');
+            }
+
+            return `
             <div class="card" onclick="openDoc('${item.file}')">
                 <div class="card-header">
-                    <span class="card-court">${item.court || 'ВС'}</span>
-                    <span class="card-date">${item.date}</span>
+                    <span class="card-court">Пленум</span>
+                    ${displayDate ? `<span class="card-date">${displayDate}</span>` : ''}
                 </div>
                 <div class="card-title">${item.title}</div>
             </div>
-        `).join('');
+            `;
+        }).join('');
     }
 
-    // --- 2. ФИЛЬТРАЦИЯ ---
+    // --- 2. ФИЛЬТРАЦИЯ И ПОИСК ---
     function filterData() {
         const query = searchInput.value.toLowerCase().trim();
         
-        const filtered = courtData.filter(item => {
-            const matchesCourt = currentCourt === 'all' || item.court === currentCourt;
+        const filtered = plenums.filter(item => {
+            // Ищем совпадения по названию
+            const matchesQuery = item.title.toLowerCase().includes(query);
             
-            // Проверяем наличие полей, чтобы поиск не падал с ошибкой
-            const titleMatch = item.title ? item.title.toLowerCase().includes(query) : false;
-            const dateMatch = item.date ? item.date.includes(query) : false;
-            const numberMatch = item.number ? item.number.includes(query) : false;
+            // Фильтр по кнопкам (ВС РФ, ВС СССР и т.д.) - ищем в тексте заголовка
+            let matchesCourt = true;
+            if (currentCourt !== 'all') {
+                matchesCourt = item.title.includes(currentCourt);
+            }
 
-            const matchesQuery = titleMatch || dateMatch || numberMatch;
-            return matchesCourt && matchesQuery;
+            return matchesQuery && matchesCourt;
         });
 
         renderCards(filtered);
     }
 
-    // Обработчики событий поиска и фильтров
+    // Обработчики событий
     searchInput.addEventListener('input', filterData);
     
     filterBtns.forEach(btn => {
@@ -183,11 +193,11 @@
         });
     });
 
-    // Первичная отрисовка (проверяем, что courtData существует)
-    if (typeof courtData !== 'undefined') {
-        renderCards(courtData);
+    // Первичная отрисовка
+    if (typeof plenums !== 'undefined') {
+        renderCards(plenums);
     } else {
-        container.innerHTML = '<div class="no-results" style="color:red;">Ошибка: файл data.js не загружен или массив называется иначе.</div>';
+        container.innerHTML = '<div class="no-results" style="color:red;">Ошибка: массив plenums не найден в data.js</div>';
     }
 
 
@@ -202,22 +212,13 @@
         docBody.innerHTML = '<p>Загрузка документа...</p>';
 
         try {
-            // 1. Запрашиваем файл
             const response = await fetch(filePath);
             if (!response.ok) throw new Error(`Файл не найден: ${filePath}`);
             
             const arrayBuffer = await response.arrayBuffer();
-
-            // 2. Конвертируем через mammoth
             const result = await mammoth.convertToHtml({ arrayBuffer: arrayBuffer });
             
-            // 3. Отображаем результат
             docBody.innerHTML = result.value;
-            
-            // Если есть ошибки конвертации (например, сложные таблицы)
-            if (result.messages.length > 0) {
-                console.warn("Предупреждения конвертации:", result.messages);
-            }
 
         } catch (error) {
             console.error(error);
@@ -230,10 +231,9 @@
     // Закрытие модального окна
     function closeDoc() {
         docModal.classList.remove('active');
-        docBody.innerHTML = ''; // Очищаем память
+        docBody.innerHTML = ''; 
     }
 
-    // Закрытие по клику на темный фон
     docModal.addEventListener('click', (e) => {
         if (e.target === docModal) {
             closeDoc();
