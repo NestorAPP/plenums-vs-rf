@@ -11,6 +11,9 @@
     <link rel="icon" type="image/png" href="icon-192.png">
     <link rel="apple-touch-icon" href="icon-192.png">
 
+    <!-- Библиотека для чтения DOCX (Файл должен лежать в корне проекта) -->
+    <script src="mammoth.browser.min.js"></script>
+
     <style>
         :root {
             --primary: #1a73e8;
@@ -61,6 +64,7 @@
             background: var(--card-bg); border-radius: 12px; padding: 16px; margin-bottom: 12px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid var(--border);
             text-decoration: none; color: inherit; display: block; transition: transform 0.1s;
+            cursor: pointer;
         }
         .card:active { transform: scale(0.98); }
         .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
@@ -69,6 +73,26 @@
         .card-title { font-size: 15px; font-weight: 500; line-height: 1.45; }
         
         .no-results { text-align: center; color: var(--text-light); margin-top: 40px; font-size: 16px; }
+
+        /* --- СТИЛИ ДЛЯ МОДАЛЬНОГО ОКНА ДОКУМЕНТА --- */
+        .doc-modal {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7); z-index: 1000; overflow-y: auto; backdrop-filter: blur(2px);
+        }
+        .doc-modal.active { display: block; }
+        .doc-content {
+            background: var(--card-bg); margin: 20px auto; padding: 24px; max-width: 800px;
+            border-radius: 12px; position: relative; color: var(--text); min-height: 100px;
+        }
+        .close-btn {
+            position: sticky; top: 10px; float: right; background: #e74c3c; color: white;
+            border: none; padding: 8px 14px; border-radius: 20px; cursor: pointer;
+            font-weight: bold; font-size: 14px; z-index: 10; box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .close-btn:hover { background: #c0392b; }
+        .doc-body { line-height: 1.6; font-size: 15px; clear: both; margin-top: 20px; }
+        .doc-body p { margin-bottom: 12px; }
+        .doc-body h1, .doc-body h2, .doc-body h3 { margin-top: 20px; margin-bottom: 10px; }
     </style>
 </head>
 <body>
@@ -88,47 +112,66 @@
     <!-- Карточки генерируются через JS -->
 </div>
 
+<!-- Модальное окно для чтения документа -->
+<div class="doc-modal" id="docModal">
+    <div class="doc-content">
+        <button class="close-btn" onclick="closeDoc()">✕ Закрыть</button>
+        <h2 style="margin-bottom: 10px; font-size: 18px;">Пленум</h2>
+        <div class="doc-body" id="docBody">
+            <!-- Сюда будет вставляться текст -->
+        </div>
+    </div>
+</div>
+
 <script src="data.js"></script>
 <script>
     const container = document.getElementById('resultsContainer');
     const searchInput = document.getElementById('searchInput');
     const filterBtns = document.querySelectorAll('.filter-btn');
+    const docModal = document.getElementById('docModal');
+    const docBody = document.getElementById('docBody');
     
     let currentCourt = 'all';
 
+    // --- 1. ОТРИСОВКА КАРТОЧЕК ---
     function renderCards(data) {
         if (data.length === 0) {
             container.innerHTML = '<div class="no-results">Ничего не найдено 🕵️‍♂️</div>';
             return;
         }
 
+        // Вместо ссылки <a href="${item.url}"> используем div с onclick
         container.innerHTML = data.map(item => `
-            <a href="${item.url}" target="_blank" class="card">
+            <div class="card" onclick="openDoc('${item.file}')">
                 <div class="card-header">
-                    <span class="card-court">${item.court}</span>
+                    <span class="card-court">${item.court || 'ВС'}</span>
                     <span class="card-date">${item.date}</span>
                 </div>
                 <div class="card-title">${item.title}</div>
-            </a>
+            </div>
         `).join('');
     }
 
+    // --- 2. ФИЛЬТРАЦИЯ ---
     function filterData() {
         const query = searchInput.value.toLowerCase().trim();
         
         const filtered = courtData.filter(item => {
             const matchesCourt = currentCourt === 'all' || item.court === currentCourt;
-            const matchesQuery = 
-                item.title.toLowerCase().includes(query) || 
-                item.date.includes(query) || 
-                item.number.includes(query);
+            
+            // Проверяем наличие полей, чтобы поиск не падал с ошибкой
+            const titleMatch = item.title ? item.title.toLowerCase().includes(query) : false;
+            const dateMatch = item.date ? item.date.includes(query) : false;
+            const numberMatch = item.number ? item.number.includes(query) : false;
+
+            const matchesQuery = titleMatch || dateMatch || numberMatch;
             return matchesCourt && matchesQuery;
         });
 
         renderCards(filtered);
     }
 
-    // Обработчики событий
+    // Обработчики событий поиска и фильтров
     searchInput.addEventListener('input', filterData);
     
     filterBtns.forEach(btn => {
@@ -140,8 +183,62 @@
         });
     });
 
-    // Первичная отрисовка
-    renderCards(courtData);
+    // Первичная отрисовка (проверяем, что courtData существует)
+    if (typeof courtData !== 'undefined') {
+        renderCards(courtData);
+    } else {
+        container.innerHTML = '<div class="no-results" style="color:red;">Ошибка: файл data.js не загружен или массив называется иначе.</div>';
+    }
+
+
+    // --- 3. ЧТЕНИЕ ДОКУМЕНТОВ (.DOCX) ---
+    async function openDoc(filePath) {
+        if (!filePath) {
+            alert("Путь к файлу не указан.");
+            return;
+        }
+
+        docModal.classList.add('active');
+        docBody.innerHTML = '<p>Загрузка документа...</p>';
+
+        try {
+            // 1. Запрашиваем файл
+            const response = await fetch(filePath);
+            if (!response.ok) throw new Error(`Файл не найден: ${filePath}`);
+            
+            const arrayBuffer = await response.arrayBuffer();
+
+            // 2. Конвертируем через mammoth
+            const result = await mammoth.convertToHtml({ arrayBuffer: arrayBuffer });
+            
+            // 3. Отображаем результат
+            docBody.innerHTML = result.value;
+            
+            // Если есть ошибки конвертации (например, сложные таблицы)
+            if (result.messages.length > 0) {
+                console.warn("Предупреждения конвертации:", result.messages);
+            }
+
+        } catch (error) {
+            console.error(error);
+            docBody.innerHTML = `<p style="color: #e74c3c; font-weight: bold;">Ошибка загрузки документа.</p>
+                                 <p>Проверьте, что файл лежит по пути: <code>${filePath}</code></p>
+                                 <p style="font-size: 12px; color: #888;">Техническая информация: ${error.message}</p>`;
+        }
+    }
+
+    // Закрытие модального окна
+    function closeDoc() {
+        docModal.classList.remove('active');
+        docBody.innerHTML = ''; // Очищаем память
+    }
+
+    // Закрытие по клику на темный фон
+    docModal.addEventListener('click', (e) => {
+        if (e.target === docModal) {
+            closeDoc();
+        }
+    });
 </script>
 </body>
 </html>
