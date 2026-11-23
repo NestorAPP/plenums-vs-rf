@@ -71,7 +71,6 @@
         
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Обновленная шапка карточки */
         .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; gap: 10px; }
         .card-meta { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
         
@@ -83,7 +82,6 @@
         
         mark { background-color: var(--highlight); color: #000; padding: 0 2px; border-radius: 2px; font-weight: bold; }
 
-        /* Звездочка (встроенная в шапку) */
         .fav-btn {
             background: none; border: none; cursor: pointer;
             font-size: 24px; color: var(--border); transition: transform 0.2s, color 0.2s; 
@@ -133,6 +131,15 @@
         .install-text { font-size: 14px; font-weight: 500; }
         .install-btn { background: var(--blue); color: white; border: none; padding: 8px 16px; border-radius: 6px; font-weight: bold; cursor: pointer; }
         .install-close { background: none; border: none; font-size: 20px; color: var(--text-light); cursor: pointer; margin-left: 10px; }
+        
+        /* Тост уведомление об офлайне */
+        .offline-toast {
+            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+            background: #323232; color: white; padding: 12px 24px; border-radius: 8px;
+            font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 2000; opacity: 0; transition: opacity 0.3s; pointer-events: none;
+        }
+        .offline-toast.show { opacity: 1; }
     </style>
 </head>
 <body>
@@ -188,6 +195,8 @@
     </div>
 </div>
 
+<div class="offline-toast" id="offlineToast">Все документы сохранены для офлайн-режима! ✅</div>
+
 <script src="data.js"></script>
 <script src="search-index.js"></script>
 <script>
@@ -196,6 +205,7 @@
     const statsText = document.getElementById('statsText');
     const docModal = document.getElementById('docModal');
     const docBody = document.getElementById('docBody');
+    const offlineToast = document.getElementById('offlineToast');
     
     let currentFilePath = '';
     let currentTitle = '';
@@ -210,7 +220,7 @@
     }
 
     function toggleFavorite(e, file, title) {
-        e.stopPropagation(); // Останавливаем всплытие, чтобы не открылся документ
+        e.stopPropagation();
         let favs = getFavorites();
         const index = favs.findIndex(f => f.file === file);
         
@@ -221,7 +231,7 @@
         }
         
         localStorage.setItem('favoriteDocs', JSON.stringify(favs));
-        filterData(); // Перерисовываем
+        filterData();
     }
 
     function isFavorite(file) {
@@ -436,9 +446,22 @@
         renderCards(plenums);
     }
 
+    // --- SERVICE WORKER С ИНДИКАТОРОМ ---
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-            navigator.serviceWorker.register('./sw.js').catch((error) => console.log('SW error', error));
+            navigator.serviceWorker.register('./sw.js').then((registration) => {
+                // Если Service Worker устанавливается (скачивает файлы)
+                if (registration.installing) {
+                    const worker = registration.installing;
+                    worker.addEventListener('statechange', () => {
+                        if (worker.state === 'installed') {
+                            // Показываем уведомление, что всё готово для офлайна
+                            offlineToast.classList.add('show');
+                            setTimeout(() => offlineToast.classList.remove('show'), 4000);
+                        }
+                    });
+                }
+            }).catch((error) => console.log('SW error', error));
         });
     }
 </script>
