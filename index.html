@@ -49,15 +49,6 @@
         }
         .search-box:focus { border-color: var(--primary); box-shadow: 0 0 0 2px rgba(26,115,232,0.2); }
 
-        .filters { display: flex; gap: 8px; margin-top: 12px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; }
-        .filters::-webkit-scrollbar { display: none; }
-        .filter-btn {
-            padding: 8px 14px; border-radius: 16px; border: 1px solid var(--border);
-            background: var(--card-bg); color: var(--text); cursor: pointer; white-space: nowrap; font-size: 14px;
-            transition: all 0.2s;
-        }
-        .filter-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
-
         .container { padding: 16px; max-width: 800px; margin: 0 auto; }
         
         .card {
@@ -69,7 +60,6 @@
         .card:active { transform: scale(0.98); }
         .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
         .card-date { font-size: 12px; color: var(--text-light); background: var(--bg); padding: 4px 8px; border-radius: 6px; font-weight: 500; }
-        .card-court { font-size: 12px; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 0.5px; }
         .card-title { font-size: 15px; font-weight: 500; line-height: 1.45; }
         
         .no-results { text-align: center; color: var(--text-light); margin-top: 40px; font-size: 16px; }
@@ -100,12 +90,6 @@
 <header>
     <h1>Пленумы Верховного Суда</h1>
     <input type="text" id="searchInput" class="search-box" placeholder="Поиск по названию, номеру, дате...">
-    <div class="filters" id="filterContainer">
-        <button class="filter-btn active" data-court="all">Все суды</button>
-        <button class="filter-btn" data-court="ВС РФ">ВС РФ</button>
-        <button class="filter-btn" data-court="ВС СССР">ВС СССР</button>
-        <button class="filter-btn" data-court="ВС РСФСР">ВС РСФСР</button>
-    </div>
 </header>
 
 <div class="container" id="resultsContainer">
@@ -128,12 +112,9 @@
 <script>
     const container = document.getElementById('resultsContainer');
     const searchInput = document.getElementById('searchInput');
-    const filterBtns = document.querySelectorAll('.filter-btn');
     const docModal = document.getElementById('docModal');
     const docBody = document.getElementById('docBody');
     
-    let currentCourt = 'all';
-
     // --- 1. ОТРИСОВКА КАРТОЧЕК ---
     function renderCards(data) {
         if (data.length === 0) {
@@ -142,7 +123,7 @@
         }
 
         container.innerHTML = data.map(item => {
-            // Пытаемся достать дату из названия (если она есть)
+            // Пытаемся достать дату из названия для красоты
             let displayDate = "";
             const dateMatch = item.title.match(/от \d{2}\.\d{2}\.\d{4}/);
             if (dateMatch) {
@@ -152,7 +133,7 @@
             return `
             <div class="card" onclick="openDoc('${item.file}')">
                 <div class="card-header">
-                    <span class="card-court">Пленум</span>
+                    <span class="card-court" style="font-size:12px; font-weight:700; color:var(--primary); text-transform:uppercase;">Пленум</span>
                     ${displayDate ? `<span class="card-date">${displayDate}</span>` : ''}
                 </div>
                 <div class="card-title">${item.title}</div>
@@ -161,37 +142,19 @@
         }).join('');
     }
 
-    // --- 2. ФИЛЬТРАЦИЯ И ПОИСК ---
+    // --- 2. ПОИСК ---
     function filterData() {
         const query = searchInput.value.toLowerCase().trim();
         
         const filtered = plenums.filter(item => {
-            // Ищем совпадения по названию
-            const matchesQuery = item.title.toLowerCase().includes(query);
-            
-            // Фильтр по кнопкам (ВС РФ, ВС СССР и т.д.) - ищем в тексте заголовка
-            let matchesCourt = true;
-            if (currentCourt !== 'all') {
-                matchesCourt = item.title.includes(currentCourt);
-            }
-
-            return matchesQuery && matchesCourt;
+            return item.title.toLowerCase().includes(query);
         });
 
         renderCards(filtered);
     }
 
-    // Обработчики событий
+    // Обработчик поиска
     searchInput.addEventListener('input', filterData);
-    
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            filterBtns.forEach(b => b.classList.remove('active'));
-            e.target.classList.add('active');
-            currentCourt = e.target.dataset.court;
-            filterData();
-        });
-    });
 
     // Первичная отрисовка
     if (typeof plenums !== 'undefined') {
@@ -199,7 +162,6 @@
     } else {
         container.innerHTML = '<div class="no-results" style="color:red;">Ошибка: массив plenums не найден в data.js</div>';
     }
-
 
     // --- 3. ЧТЕНИЕ ДОКУМЕНТОВ (.DOCX) ---
     async function openDoc(filePath) {
