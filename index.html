@@ -9,7 +9,6 @@
     <meta name="theme-color" content="#0039a6">
     <link rel="icon" type="image/png" href="icon-192.png">
 
-    <!-- Библиотека для чтения DOCX -->
     <script src="mammoth.browser.min.js"></script>
 
     <style>
@@ -26,19 +25,13 @@
         }
         @media (prefers-color-scheme: dark) {
             :root {
-                --bg: #121212;
-                --card-bg: #1e1e1e;
-                --text: #e8eaed;
-                --text-light: #9aa0a6;
-                --border: #333;
-                --blue: #4a7bd1;
-                --highlight: #b08d00;
+                --bg: #121212; --card-bg: #1e1e1e; --text: #e8eaed;
+                --text-light: #9aa0a6; --border: #333; --blue: #4a7bd1; --highlight: #b08d00;
             }
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
         body { background: var(--bg); color: var(--text); padding-bottom: 80px; }
         
-        /* Шапка */
         header {
             position: sticky; top: 0; background: var(--blue); padding: 16px; z-index: 10;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -46,7 +39,6 @@
         .header-title { display: flex; justify-content: center; align-items: center; gap: 8px; margin-bottom: 12px; color: white; }
         .header-title h1 { font-size: 18px; font-weight: 600; }
         
-        /* Поиск */
         .search-wrapper { position: relative; }
         .search-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); fill: #666; }
         .search-box {
@@ -56,7 +48,6 @@
         }
         .search-box:focus { box-shadow: 0 0 0 3px rgba(213, 43, 30, 0.5); }
 
-        /* Табы (Недавние / Избранное) */
         .tabs-container { max-width: 800px; margin: 15px auto 0; padding: 0 16px; display: flex; gap: 10px; }
         .tab-btn { flex: 1; padding: 10px; border: none; background: var(--card-bg); border-radius: 8px; font-weight: 600; color: var(--text-light); cursor: pointer; border: 1px solid var(--border); transition: 0.2s; }
         .tab-btn.active { background: var(--blue); color: white; border-color: var(--blue); }
@@ -69,19 +60,21 @@
 
         .container { padding: 16px; max-width: 800px; margin: 0 auto; }
         
-        /* Карточки */
         .card {
             background: var(--card-bg); border-radius: 12px; padding: 16px; margin-bottom: 12px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.08); border-left: 4px solid var(--blue);
             cursor: pointer; transition: transform 0.1s, box-shadow 0.1s;
-            animation: fadeIn 0.3s ease-out forwards; position: relative;
+            animation: fadeIn 0.3s ease-out forwards;
         }
         .card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.15); transform: translateY(-2px); }
         .card:active { transform: scale(0.98); }
         
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; padding-right: 30px; /* место для звездочки */ }
+        /* Обновленная шапка карточки */
+        .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; gap: 10px; }
+        .card-meta { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+        
         .card-date { font-size: 12px; color: var(--text-light); background: var(--bg); padding: 4px 8px; border-radius: 6px; font-weight: 500; }
         .card-court { font-size: 12px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: 0.5px; }
         .card-title { font-size: 15px; font-weight: 600; line-height: 1.45; color: var(--text); }
@@ -90,21 +83,20 @@
         
         mark { background-color: var(--highlight); color: #000; padding: 0 2px; border-radius: 2px; font-weight: bold; }
 
-        /* Звездочка (Избранное) */
+        /* Звездочка (встроенная в шапку) */
         .fav-btn {
-            position: absolute; top: 14px; right: 14px; background: none; border: none; cursor: pointer;
-            font-size: 22px; color: var(--border); transition: transform 0.2s, color 0.2s; padding: 0;
+            background: none; border: none; cursor: pointer;
+            font-size: 24px; color: var(--border); transition: transform 0.2s, color 0.2s; 
+            line-height: 1; padding: 0; flex-shrink: 0;
         }
         .fav-btn.active { color: #f1c40f; transform: scale(1.1); }
 
-        /* Пустое состояние */
         .no-results { text-align: center; margin-top: 40px; display: flex; flex-direction: column; align-items: center; }
         .no-results svg { width: 64px; height: 64px; fill: var(--text-light); margin-bottom: 15px; opacity: 0.5; }
         .no-results-text { font-size: 18px; color: var(--text-light); margin-bottom: 15px; text-align: center; }
         .btn-reset { background: var(--blue); color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 15px; font-weight: bold; transition: 0.2s; }
         .btn-reset:hover { background: var(--red); }
 
-        /* --- МОДАЛЬНОЕ ОКНО --- */
         .doc-modal {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.8); z-index: 1000; overflow-y: auto;
@@ -124,17 +116,13 @@
         
         .btn { padding: 8px 14px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 14px; border: none; transition: 0.2s; display: flex; align-items: center; gap: 6px; }
         .btn-download { background: var(--blue); color: white; }
-        .btn-download:hover { background: #002a7a; }
         .btn-copy { background: #34a853; color: white; }
-        .btn-copy:hover { background: #2b8c45; }
         .btn-close { background: var(--red); color: white; }
-        .btn-close:hover { background: #b02318; }
         .btn-font { background: var(--border); color: var(--text); font-size: 16px; padding: 4px 10px; }
         
         .doc-body { line-height: 1.6; font-size: 16px; clear: both; }
         .doc-body p { margin-bottom: 12px; }
 
-        /* Кнопка установки */
         .install-banner {
             display: none; position: fixed; bottom: 0; left: 0; width: 100%;
             background: var(--card-bg); border-top: 1px solid var(--border); padding: 12px 16px;
@@ -174,7 +162,6 @@
     <!-- Карточки -->
 </div>
 
-<!-- Модальное окно документа -->
 <div class="doc-modal" id="docModal">
     <div class="doc-content">
         <div class="modal-actions">
@@ -193,7 +180,6 @@
     </div>
 </div>
 
-<!-- Баннер установки -->
 <div class="install-banner" id="installBanner">
     <div class="install-text">Установить приложение?</div>
     <div style="display:flex; align-items:center;">
@@ -214,28 +200,28 @@
     let currentFilePath = '';
     let currentTitle = '';
     let currentFontSize = 16;
-    let currentTab = 'all'; // 'all' или 'fav'
+    let currentTab = 'all';
     let deferredPrompt;
 
-    // --- ИЗБРАННОЕ И НЕДАВНИЕ ---
+    // --- ИЗБРАННОЕ ---
     function getFavorites() {
         const favs = localStorage.getItem('favoriteDocs');
         return favs ? JSON.parse(favs) : [];
     }
 
     function toggleFavorite(e, file, title) {
-        e.stopPropagation(); // Чтобы не открывался документ при клике на звезду
+        e.stopPropagation(); // Останавливаем всплытие, чтобы не открылся документ
         let favs = getFavorites();
         const index = favs.findIndex(f => f.file === file);
         
         if (index > -1) {
-            favs.splice(index, 1); // Удаляем
+            favs.splice(index, 1);
         } else {
-            favs.push({ file, title }); // Добавляем
+            favs.push({ file, title });
         }
         
         localStorage.setItem('favoriteDocs', JSON.stringify(favs));
-        filterData(); // Перерисовываем список
+        filterData(); // Перерисовываем
     }
 
     function isFavorite(file) {
@@ -286,12 +272,14 @@
 
             return `
             <div class="card" style="animation-delay: ${animationDelay}" onclick="openDoc('${item.file}', '${item.title.replace(/'/g, "\\'")}')">
-                <button class="fav-btn ${isFav ? 'active' : ''}" onclick="toggleFavorite(event, '${item.file}', '${item.title.replace(/'/g, "\\'")}')">
-                    ${isFav ? '★' : '☆'}
-                </button>
                 <div class="card-header">
-                    <span class="card-court">Пленум</span>
-                    ${displayDate ? `<span class="card-date">${displayDate}</span>` : ''}
+                    <div class="card-meta">
+                        <span class="card-court">Пленум</span>
+                        ${displayDate ? `<span class="card-date">${displayDate}</span>` : ''}
+                    </div>
+                    <button class="fav-btn ${isFav ? 'active' : ''}" onclick="toggleFavorite(event, '${item.file}', '${item.title.replace(/'/g, "\\'")}')">
+                        ${isFav ? '★' : '☆'}
+                    </button>
                 </div>
                 <div class="card-title">${highlightedTitle}</div>
                 ${snippetHTML}
@@ -300,7 +288,7 @@
         }).join('');
     }
 
-    // --- ЛОГИКА ПОИСКА И ТАБОВ ---
+    // --- ПОИСК И ТАБЫ ---
     function switchTab(tab) {
         currentTab = tab;
         document.getElementById('tabAll').classList.toggle('active', tab === 'all');
@@ -323,7 +311,6 @@
         }
 
         const results = [];
-
         sourceData.forEach(item => {
             const titleMatch = item.title.toLowerCase().includes(query);
             let textMatch = false;
@@ -367,7 +354,6 @@
     async function openDoc(filePath, title) {
         currentFilePath = filePath;
         currentTitle = title;
-        
         docModal.classList.add('active');
         document.getElementById('modalTitle').textContent = title || "Документ";
         docBody.innerHTML = '<p>Загрузка документа...</p>';
@@ -390,14 +376,8 @@
             const btn = document.getElementById('copyBtn');
             const originalText = btn.innerHTML;
             btn.innerHTML = '✅ Скопировано!';
-            btn.style.background = '#2b8c45';
-            setTimeout(() => {
-                btn.innerHTML = originalText;
-                btn.style.background = '#34a853';
-            }, 2000);
-        }).catch(err => {
-            alert('Не удалось скопировать текст.');
-        });
+            setTimeout(() => { btn.innerHTML = originalText; }, 2000);
+        }).catch(() => alert('Не удалось скопировать.'));
     }
 
     function changeFontSize(delta) {
@@ -432,7 +412,6 @@
     window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault();
         deferredPrompt = e;
-        // Показываем баннер только если приложение еще не установлено
         if (!window.matchMedia('(display-mode: standalone)').matches) {
             document.getElementById('installBanner').classList.add('active');
         }
@@ -441,10 +420,7 @@
     function installPWA() {
         if (deferredPrompt) {
             deferredPrompt.prompt();
-            deferredPrompt.userChoice.then((choiceResult) => {
-                if (choiceResult.outcome === 'accepted') {
-                    console.log('Пользователь установил приложение');
-                }
+            deferredPrompt.userChoice.then(() => {
                 deferredPrompt = null;
                 hideInstallBanner();
             });
@@ -458,16 +434,11 @@
     // --- ИНИЦИАЛИЗАЦИЯ ---
     if (typeof plenums !== 'undefined') {
         renderCards(plenums);
-    } else {
-        container.innerHTML = '<div class="no-results" style="color:red;">Ошибка загрузки данных</div>';
     }
 
-    // --- SERVICE WORKER ---
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-            navigator.serviceWorker.register('./sw.js')
-                .then((registration) => console.log('SW зарегистрирован'))
-                .catch((error) => console.log('Ошибка SW:', error));
+            navigator.serviceWorker.register('./sw.js').catch((error) => console.log('SW error', error));
         });
     }
 </script>
