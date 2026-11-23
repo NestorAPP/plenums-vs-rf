@@ -9,11 +9,12 @@
     <meta name="theme-color" content="#0039a6">
     <link rel="icon" type="image/png" href="icon-192.png">
 
+    <!-- Библиотека для чтения DOCX -->
     <script src="mammoth.browser.min.js"></script>
 
     <style>
         :root {
-            /* Российский триколор */
+            /* Цвета Российского триколора */
             --white: #ffffff;
             --blue: #0039a6;
             --red: #d52b1e;
@@ -180,8 +181,10 @@
     </div>
 </div>
 
+<!-- Подключаем данные -->
 <script src="data.js"></script>
 <script src="search-index.js"></script>
+
 <script>
     const container = document.getElementById('resultsContainer');
     const searchInput = document.getElementById('searchInput');
@@ -201,11 +204,8 @@
 
     function addToRecent(file, title) {
         let recent = getRecent();
-        // Удаляем дубликаты
         recent = recent.filter(item => item.file !== file);
-        // Добавляем в начало
         recent.unshift({ file, title });
-        // Оставляем только 5 последних
         recent = recent.slice(0, 5);
         localStorage.setItem('recentDocs', JSON.stringify(recent));
         renderRecent();
@@ -270,7 +270,6 @@
             }
 
             const highlightedTitle = highlightText(item.title, query);
-            // Небольшая задержка для каскадной анимации
             const animationDelay = Math.min(index * 0.05, 0.5) + 's';
 
             return `
@@ -345,7 +344,6 @@
         document.getElementById('modalTitle').textContent = title || "Документ";
         docBody.innerHTML = '<p>Загрузка документа...</p>';
 
-        // Сохраняем в недавние
         addToRecent(filePath, title);
 
         try {
@@ -394,6 +392,19 @@
         renderRecent();
     } else {
         container.innerHTML = '<div class="no-results" style="color:red;">Ошибка: массив plenums не найден в data.js</div>';
+    }
+
+    // --- РЕГИСТРАЦИЯ SERVICE WORKER ДЛЯ ОФЛАЙН-РЕЖИМА ---
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('./sw.js')
+                .then((registration) => {
+                    console.log('ServiceWorker зарегистрирован успешно:', registration.scope);
+                })
+                .catch((error) => {
+                    console.log('Ошибка регистрации ServiceWorker:', error);
+                });
+        });
     }
 </script>
 </body>
